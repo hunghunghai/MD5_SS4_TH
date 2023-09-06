@@ -75,19 +75,19 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         return viewResolver;
     }
 
-    @Bean(name = "multipartResolver")
-    public CommonsMultipartResolver getResolver() throws IOException {
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setMaxUploadSizePerFile(52428800);// 50MB
-        return resolver;
-    }
+//    @Bean(name = "multipartResolver")
+//    public CommonsMultipartResolver getResolver() throws IOException {
+//        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+//        resolver.setMaxUploadSizePerFile(52428800);// 50MB
+//        return resolver;
+//    }
 
     // cấu hình đường dẫn
 //    @Override
 //    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/upload/**")
-//                .addResourceLocations("file:"+pathImage);
+//        registry.addResourceHandler("/upload/**").addResourceLocations("file:" + pathImage);
 //    }
+
     // cấu hình entityManager
     @Bean
     @Qualifier(value = "entityManager")
@@ -115,7 +115,7 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/restful");
         dataSource.setUsername("root");
-        dataSource.setPassword("12345678");
+        dataSource.setPassword("123456");
         return dataSource;
     }
 
@@ -134,8 +134,9 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         properties.setProperty("hibernate.show_sql", "true");
         return properties;
     }
+
     @Bean
-    public ICustomerService customerService(){
+    public ICustomerService customerService() {
         return new CustomerServiceIMPL();
     }
 }
